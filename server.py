@@ -3,6 +3,7 @@ from base64 import b64decode, b64encode
 from io import BytesIO
 from PIL import Image
 import requests
+import json
 
 # local import
 import funcs
@@ -17,7 +18,7 @@ def index():
 @app.route("/generate_new_background", methods=["POST"])
 def preproc_for_controlnet():
     
-    input = request.get_data()
+    input = request.get_json(force=True)
     image_b64 = input.get('image')
     size = int(input.get('size'))
     prompt = input.get('prompt')
