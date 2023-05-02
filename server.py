@@ -27,8 +27,8 @@ def preproc_for_controlnet():
     preproc_img = funcs.create_mask(img, size) 
     
     buffered = BytesIO()
-    preproc_img.save(buffered)
-    preproc_b64 = b64encode(buffered.getvalue())
+    preproc_img.save(buffered, "PNG")
+    preproc_b64 = b64encode(buffered.getvalue()).decode('utf-8')
     
     # call controlnet API
     CNR = ControlnetRequest(prompt, size, preproc_b64)
