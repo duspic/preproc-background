@@ -2,8 +2,7 @@ from flask import Flask, request
 from base64 import b64decode, b64encode
 from io import BytesIO
 from PIL import Image
-import requests
-import json
+
 
 # local import
 import funcs
@@ -23,7 +22,7 @@ def preproc_for_controlnet():
     size = int(input.get('size'))
     prompt = input.get('prompt')
     
-    img = Image.open(BytesIO(b64decode(image_b64))) #convert from b64 to PIL.Image
+    img = Image.open(BytesIO(b64decode(image_b64)))
     preproc_img = funcs.create_mask(img, size) 
     
     buffered = BytesIO()
@@ -34,6 +33,10 @@ def preproc_for_controlnet():
     CNR = ControlnetRequest(prompt, size, preproc_b64)
     res = CNR.sendRequest()
     
+    gen_imgs = res.get('images')
+    print(20*"#")
+    print(f"number of retrieved images is {len(gen_imgs)}")
+    print(20*"#")
     return res
 
 
