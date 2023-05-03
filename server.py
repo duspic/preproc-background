@@ -35,7 +35,7 @@ def preproc_for_controlnet():
     
     gen_imgs = res.get('images')
     for i,img in enumerate(gen_imgs):
-        Image.open(BytesIO(b64decode(image_b64))).save(f"img_{i}.png")
+        Image.open(BytesIO(b64decode(img))).save(f"./img_{i}.png")
     return res
 
 
