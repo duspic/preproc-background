@@ -62,8 +62,8 @@ def generate_new_background():
     image_b64 = input.get('image')
     prompt = input.get('prompt')
     
-    width = funcs.set_width_height(width)
-    height = funcs.set_width_height(height)
+    width = funcs.set_width_height(input.get('width'))
+    height = funcs.set_width_height(input.get('height'))
     
     img = Image.open(BytesIO(b64decode(image_b64)))
     preproc_img = funcs.create_mask(img, width, height) 
