@@ -34,9 +34,8 @@ def preproc_for_controlnet():
     res = CNR.sendRequest()
     
     gen_imgs = res.get('images')
-    print(20*"#")
-    print(f"number of retrieved images is {len(gen_imgs)}")
-    print(20*"#")
+    for i,img in enumerate(gen_imgs):
+        Image.open(BytesIO(b64decode(image_b64))).save(f"img_{i}.png")
     return res
 
 
