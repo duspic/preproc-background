@@ -15,7 +15,7 @@ def readImage(path):
 class ControlnetRequest():
     def __init__(self, prompt, size, b64img):
         self.b64img = b64img
-        self.url = "http://localhost:7861/sdapi/v1/txt2img"
+        self.url = "http://automatic:7861/sdapi/v1/txt2img"
         self.body = {
             "prompt": f"RAW photo, {prompt}, product photography, highres, extremely detailed, best quality,  8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3",
             "negative_prompt": "poorly drawn, lowres, bad quality, worst quality, (unrealistic), (overexposed:1.3), (underexposed), (floating:1.4), (blurry background:1.3)",
