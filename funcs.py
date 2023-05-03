@@ -21,8 +21,8 @@ def scale_to(image, size:int):
     image_scaled = image.resize((new_width,new_height))
     return image_scaled
 
-def create_mask(image, size:int):
-    res = Image.new("RGBA", (size,size), (255,255,255))
+def create_mask(image, width:int, height:int):
+    res = Image.new("RGBA", (width,height), (255,255,255))
     
     enhancer = ImageEnhance.Brightness(image)
     dark_object = enhancer.enhance(0.3)
@@ -44,9 +44,7 @@ def erode_mask(noback, size):
   mask = mask.filter(ImageFilter.MinFilter(11))
   return mask
 
-def pad_object(noback, size):
-  pad = Image.new("RGBA", (size, size), (0,0,0,0))
-  pad.paste(noback)
-  return pad
-
-    
+def set_width_height(w_or_h):
+  if not w_or_h:
+    return 512
+  return int(w_or_h)

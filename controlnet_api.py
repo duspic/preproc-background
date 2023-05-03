@@ -13,7 +13,7 @@ def readImage(path):
     
 
 class ControlnetRequest():
-    def __init__(self, prompt, size, b64img):
+    def __init__(self, prompt, width, height, b64img):
         self.b64img = b64img
         self.url = "http://automatic:7861/sdapi/v1/txt2img"
         self.body = {
@@ -26,8 +26,8 @@ class ControlnetRequest():
             "n_iter": 1,
             "steps": 30,
             "cfg_scale": 7,
-            "width": size,
-            "height": size,
+            "width": width,
+            "height": height,
             "restore_faces": False,
             "eta": 0,
             "sampler_index": "Euler a",
