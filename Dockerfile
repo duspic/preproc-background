@@ -1,6 +1,4 @@
 FROM python:latest
 RUN git clone https://github.com/duspic/preproc-background
-RUN cd preproc-background
-RUN pip install -r requirements.txt
-EXPOSE 7860
-CMD python server.py
+RUN cd preproc-background && pip install -r requirements.txt
+CMD cd preproc-background && python server.py
