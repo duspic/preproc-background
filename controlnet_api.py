@@ -48,5 +48,4 @@ class ControlnetRequest():
     def sendRequest(self):
         r = requests.post(self.url, json=self.body)
         j = r.json()
-        j['input_cn_img'] = self.b64img
-        return json.dumps(j)
+        return j
